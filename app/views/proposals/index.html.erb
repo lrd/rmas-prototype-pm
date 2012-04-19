@@ -1,0 +1,31 @@
+<div class='page-header'>
+  <h1>Proposals</h1>
+</div>
+
+<div class='row'>
+  <div class='span14'>
+    <table class='zebra-striped'>
+      <tr>
+        <th>Title</th>
+        <th>Description</th>
+        <th style='width: 10%'></th>
+        <th style='width: 10%'></th>
+      </tr>
+
+    <% @proposals.each do |proposal| %>
+      <tr>
+        <td><%= link_to proposal.title, proposal %></td>
+        <td><%= truncate proposal.description, :length => 60, :separator => ' ' %></td>
+        <td><%= link_to 'Edit', edit_proposal_path(proposal), :class => 'btn' %></td>
+        <td><%= link_to 'Delete', proposal, confirm: 'Are you sure?', method: :delete, :class => 'btn danger' %></td>
+      </tr>
+    <% end %>
+    </table>
+
+    <br />
+
+    <%= link_to 'New Proposal', new_proposal_path, :class => 'btn primary' %>
+  </div>
+</div>
+
+
